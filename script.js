@@ -1,5 +1,10 @@
-const users = document.querySelectorAll('li')
-for(i=0;i<users.length;i++){
-    users[i].style.fontWeight = 'bold';
+const usersByClassName = document.getElementsByClassName('list-group-item')
+const usersByTagName = document.getElementsByTagName('li')
+
+for(i=0;i<usersByClassName.length;i++){
+    usersByClassName[i].style.backgroundColor = 'grey';
 }
-users[2].style.backgroundColor = 'green'
+
+for(i=0;i<usersByTagName.length;i++){
+    usersByTagName[i].innerText= `This is user ${i}`;
+}
