@@ -1,10 +1,11 @@
-const usersByClassName = document.getElementsByClassName('list-group-item')
-const usersByTagName = document.getElementsByTagName('li')
+const usersByQuerySelectorSecond = document.querySelector('.list-group-item:nth-child(2)')
+const usersByQuerySelectorThird = document.querySelector('.list-group-item:nth-child(3)')
+const usersByQuerySelectorAll = document.querySelectorAll('li')
 
-for(i=0;i<usersByClassName.length;i++){
-    usersByClassName[i].style.backgroundColor = 'grey';
-}
+usersByQuerySelectorSecond.style.backgroundColor = '#90EE90';
+usersByQuerySelectorThird.textContent = ''
+usersByQuerySelectorAll[1].style.color = 'green'
 
-for(i=0;i<usersByTagName.length;i++){
-    usersByTagName[i].innerText= `This is user ${i}`;
+for(i=0;i<usersByQuerySelectorAll.length;i=i+2){
+    usersByQuerySelectorAll[i].style.backgroundColor='green'
 }
