@@ -1,11 +1,37 @@
-const usersByQuerySelectorSecond = document.querySelector('.list-group-item:nth-child(2)')
-const usersByQuerySelectorThird = document.querySelector('.list-group-item:nth-child(3)')
-const usersByQuerySelectorAll = document.querySelectorAll('li')
+//parentNode
+const itemList = document.querySelector('#items')
+const parent = itemList.parentNode
+console.log(parent)
+parent.style.backgroundColor = 'grey'
+//parentElement
+const itemListElement = document.querySelector('#items')
+const parentElement = itemList.parentElement
 
-usersByQuerySelectorSecond.style.backgroundColor = '#90EE90';
-usersByQuerySelectorThird.textContent = ''
-usersByQuerySelectorAll[1].style.color = 'green'
+console.log(itemList.childNodes)
+console.log(itemList.children)
+console.log(itemList.firstChild)
+console.log(itemList.firstElementChild)
+itemList.firstElementChild.textContent='Hello'
 
-for(i=0;i<usersByQuerySelectorAll.length;i=i+2){
-    usersByQuerySelectorAll[i].style.backgroundColor='green'
-}
+console.log(itemList.lastChild)
+console.log(itemList.lastElementChild)
+
+//sibling
+console.log(itemList.nextSibling)
+console.log(itemList.nextElementSibling)
+console.log(itemList.previousSibling)
+console.log(itemList.previousElementSibling)
+
+//creating dom element
+var newDiv = document.createElement('div')
+newDiv.className = 'newDiv'
+newDiv.setAttribute('title','newer div')
+
+var newDivChild = document.createTextNode('hello world')
+newDiv.appendChild(newDivChild)
+console.log(newDiv)
+
+var container = document.querySelector('header .container')
+var h1 = document.querySelector('header h1')
+
+container.insertBefore(newDiv,h1)
