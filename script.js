@@ -1,37 +1,36 @@
-//parentNode
-const itemList = document.querySelector('#items')
-const parent = itemList.parentNode
-console.log(parent)
-parent.style.backgroundColor = 'grey'
-//parentElement
-const itemListElement = document.querySelector('#items')
-const parentElement = itemList.parentElement
+const items = document.getElementById('items')
 
-console.log(itemList.childNodes)
-console.log(itemList.children)
-console.log(itemList.firstChild)
-console.log(itemList.firstElementChild)
-itemList.firstElementChild.textContent='Hello'
+const form = document.getElementById('addForm')
 
-console.log(itemList.lastChild)
-console.log(itemList.lastElementChild)
+form.addEventListener('submit',addInput)
+items.addEventListener('click',removeItem)
 
-//sibling
-console.log(itemList.nextSibling)
-console.log(itemList.nextElementSibling)
-console.log(itemList.previousSibling)
-console.log(itemList.previousElementSibling)
+const itemsList = document.querySelectorAll('.list-group-item');
 
-//creating dom element
-var newDiv = document.createElement('div')
-newDiv.className = 'newDiv'
-newDiv.setAttribute('title','newer div')
+for(let i=0;i<itemsList.length;i++){
+    const editButton = document.createElement('button');
+    editButton.appendChild(document.createTextNode('edit'))
+    editButton.className='btn btn-primary btn-sm float-right'
+    itemsList[i].appendChild(editButton)
+}
 
-var newDivChild = document.createTextNode('hello world')
-newDiv.appendChild(newDivChild)
-console.log(newDiv)
-
-var container = document.querySelector('header .container')
-var h1 = document.querySelector('header h1')
-
-container.insertBefore(newDiv,h1)
+function addInput(e){
+    e.preventDefault();
+    var inputItem = document.getElementById('item').value;
+    const newLi = document.createElement('li');
+    newLi.className = 'list-group-item';
+    newLi.appendChild(document.createTextNode(inputItem));
+    const newBtn = document.createElement('button');
+    newBtn.className = 'btn btn-danger btn-sm float-right delete';
+    newBtn.appendChild(document.createTextNode('X'));
+    newLi.appendChild(newBtn);
+    items.appendChild(newLi);
+}
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure?')){
+           const li = e.target.parentElement;
+           items.removeChild(li);
+        }
+    }
+}
